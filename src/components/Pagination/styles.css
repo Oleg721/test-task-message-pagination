@@ -1,0 +1,13 @@
+
+.pagination{
+    height: 10%;
+    display: flex;
+}
+
+.pagination ul{
+    border-radius: .25em;
+    border: 1px solid #e6e6e6;
+    text-align: center;
+    list-style: none;
+    margin:  auto
+}
