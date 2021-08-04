@@ -20,7 +20,7 @@
     transform: scale(.9);
 }
 
-.pagination-item a[iscurrent="true"]{
+.pagination-item[iscurrent="true"] a{
     background-color: #64a281;
     border-color: #64a281;
     color: #fff;
@@ -32,3 +32,9 @@
     cursor: default;
 }
 
+@media screen and (max-width: 800px){
+    .pagination-item:not(:last-child,:first-child, :nth-child(2),:nth-last-child(2),[iscurrent="true"]){
+        display: none;
+    }
+
+}

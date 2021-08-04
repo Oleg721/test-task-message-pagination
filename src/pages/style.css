@@ -1,4 +1,5 @@
-button{
-    height: 5%;
-    width: 7rem;
+.wrapper{
+    height: 3rem;
+    display: flex;
+    padding: 0.5rem;
 }

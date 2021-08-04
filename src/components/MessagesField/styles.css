@@ -2,40 +2,26 @@
 
 .messages-field{
   position: relative;
-  height: 75%;
-  padding: 0.5rem 0.5rem 1rem 0.2rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.2rem;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   list-style: none ;
   overflow: auto;
 }
 
+
 div.messages-field-loading{
 position: fixed;
-  background-color: #80808061;
+  background-color: #fafafa75;
   height: inherit;
   width: 100%;
   display: flex;
-  margin: -0.5rem;
+  margin: -1.2rem 0 0 -0.2rem;
 }
 
 .messages-field h3{
-
   margin: auto;
-
 }
 
-.messages-field li{
-  padding: 0.3rem;
-  margin: 0.5rem;
-}
 
-.messages-field li span:first-child{
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.messages-field span{
-  display: block;
-  text-align: left;
-}

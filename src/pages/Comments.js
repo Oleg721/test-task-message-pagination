@@ -3,6 +3,9 @@ import React, {useEffect, useState} from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import MessagesField from "../components/MessagesField";
 import Pagination from "../components/Pagination";
+import Button from "../components/Button";
+import SendForm from "../components/SendForm";
+import fetchAPI from "../utility/fetchAPI";
 
 const serverAPI_URL = "https://jordan.ashton.fashion/api/goods/30/comments"
 
@@ -20,7 +23,20 @@ function Comments() {
         }
     }
 
-    function showMoreHandler(){
+    async function sendMessage(data) {
+        try{
+            const result = await fetchAPI(serverAPI_URL)(data)
+            if(result >= 1){
+                const link = links[links.length - 2]
+                getPageData(link.url)
+            }
+        }catch (e) {
+            console.log(e)
+            // throw new Error(e)
+        }
+    }
+
+    function showMoreMessagesHandler(){
         setIsClearMessages(false);
         links.forEach(({active}, index) => {
             if(active){
@@ -31,28 +47,32 @@ function Comments() {
 
     useEffect(async () => {
         setIsLoading(true);
-        const response = await fetch(serverAPI_URL + location.search);
-        const {data, links} = await response.json()
-        if(isClearMessage){
-            setMessages(data);
-        }else {
-            setMessages([...messages, ...data]);
-            setIsClearMessages(true);
+        try {
+            const response = await fetch(serverAPI_URL + location.search);
+            const {data, links} = await response.json()
+            if(isClearMessage){
+                setMessages(data);
+            }else {
+                setMessages([...messages, ...data]);
+                setIsClearMessages(true);
+            }
+            setLinks(links);
+        } catch (e) {
+            console.log(e)
+            // throw new Error(e)
         }
-        setLinks(links);
         setIsLoading(false);
-    }, [location.search])
+    }, [location])
 
     return (
-            <div className="App">
+            <>
                 <MessagesField messages={messages} isLoading={isLoading}/>
-                <button
-                    style={!!links[links.length-1]?.url ? {} :{"visibility" : "hidden"}}
-                    onClick={showMoreHandler}>
-                    Показать еще
-                </button>
+                <div className="wrapper">
+                    <Button isVisible={!!links[links.length-1]?.url} onClickHandler={showMoreMessagesHandler}>Показать еще</Button>
+                </div>
                 <Pagination links={links} onClickEvent={getPageData}/>
-            </div>
+                <SendForm onSubmitHandler={sendMessage}/>
+            </>
     );
 }
 

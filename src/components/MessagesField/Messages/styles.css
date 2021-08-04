@@ -1,0 +1,24 @@
+
+.message-li{
+  padding: 0.3rem;
+  margin: 0.5rem;
+}
+
+.message-li > span:first-child{
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2b995b;
+}
+
+.message-li > span{
+  display: block;
+  text-align: left;
+
+}
+
+.message-li > span > span{
+  font-weight: normal;
+  font-size: 0.9rem;
+  padding-left: 0.5rem;
+  color: brown;
+}

@@ -1,0 +1,34 @@
+.form{
+height: 8rem;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.7rem;
+    margin: 0.5rem;
+    border: 1px solid #3b3b3b;
+    background: rgba(100, 162, 129, 0.25);
+}
+
+.form > div{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: flex-start;
+}
+
+.form label {
+    font-weight: 600;
+}
+
+.form input[name="name"]{
+max-width: 18rem;
+}
+
+.form input[type="text"]{
+    font-size: 1rem;
+    padding: 0.3rem;
+    width: 100%;
+}
+
+.form input[type="submit"]{
+    margin: 0 1rem;
+}

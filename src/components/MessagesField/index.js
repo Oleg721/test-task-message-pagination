@@ -1,21 +1,12 @@
 import React, {useRef} from "react";
 import './styles.css';
-
+import Message from "./Messages";
 
 export default function MessagesField({messages, isLoading}){
-
-    const ulEl = useRef();
-    // ulEl.current.
-
-    {    console.log(ulEl.current?.scrollTop)}
     return(<div className="messages-field">
-            <ul ref={ulEl} >
-
-                {messages.map(({id, name, text}) =>{
-                    return  <li key={id}>
-                        <span>{name}</span>
-                        <span>{text}</span>
-                    </li>
+            <ul>
+                {messages.map(({id, name, text, created_at}) =>{
+                    return  <Message key={id} name={name} text={text} date={new Date(created_at).toLocaleString()} />
                 })}
             </ul>
             {isLoading && <div className="messages-field-loading">
@@ -25,14 +16,4 @@ export default function MessagesField({messages, isLoading}){
             </div>}
         </div>
     )
-    // if(false){
-    //     return (
-    //          <div className="messages-field">
-    //              <h3>
-    //                  Loading...
-    //              </h3>
-    //          </div>)
-    // }else {
-    //
-    // }
 }

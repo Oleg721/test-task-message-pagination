@@ -4,6 +4,10 @@
   margin: 0;
 }
 
+ul{
+  list-style: none;
+}
+
 .App {
   display: flex;
   flex-direction: column;

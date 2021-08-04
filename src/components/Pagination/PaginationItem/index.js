@@ -3,9 +3,8 @@ import './styles.css';
 
 export default function PaginationItem({url, label, isCurrent, onClick}){
     return(
-        <li className='pagination-item' key={label}>
+        <li className='pagination-item' key={label} iscurrent={isCurrent.toString()}>
             <a href={url }
-               iscurrent={isCurrent.toString()}
                dangerouslySetInnerHTML={{"__html": label.toString()}}
                onClick={event => {
                    event.preventDefault();
